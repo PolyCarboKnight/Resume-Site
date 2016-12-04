@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<title>Robin's Resume Site</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<link rel= "stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+	<body background = "images/background.png">
+		<div class = "container" ng-controller = "AppCtrl" style = "padding-top: 25px">
+			<div class = "panel panel-warning">
+				<div class = "panel-heading"><h4 align = "center">My Education</h4></div>
+				<table class = "table table-hover">
+					<thead>
+						<tr>
+							<th>School</th>
+							<th>Degree</th>
+							<th>Grad Year</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "item in resume | filter: {type: 'edu'}">
+							<td>{{item.school}}</td>
+							<td>{{item.degree}}</td>
+							<td>{{item.last_year}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class = "container" ng-controller = "AppCtrl">
+			<div class = "panel panel-danger" style = "float: left; margin-right: 18px">
+				<div class = "panel-heading"><h4 align = "center">Contact Me</h4></div>
+				<div class = "panel-body">
+					<form>
+						<div class="form-group">
+							<label for="nameInput">Your name</label>
+							<input type="name" class="form-control" id="nameInput" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="emailAddress">Your email address</label>
+							<input type="email" class="form-control" id="emailAddress" aria-describedby="emailHelp" placeholder="Email">
+							<small id="emailHelp" class="form-text text-muted">Any information you send me will be kept confidential, including this email address.</small>
+						</div>
+						<div class="form-group">
+							<label for="message">Your Message</label>
+							<textarea class="form-control" id="message" placeholder="Message" rows="3"></textarea>
+						</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div style = "float: left; width: 45%; margin-right: 18px">
+				<div class = "panel panel-success">
+					<div class = "panel-heading"><h4 align = "center">Current Projects</h4></div>
+					<div class = table-responsive>
+					<table class = "table">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat = "item in resume | filter: {type: 'project'}">
+								<td>{{item.title}}</td>
+								<td>{{item.description}}</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+				<div class = "panel panel-default">
+					<div class = "panel-heading"><h4 align = "center">About Me</h4></div>
+					<div class = "panel-body">My name is Robin Chan and that's all you really need to know for now.</div>
+				</div>
+			</div>
+			<div class = "panel panel-info" style = "float: left">
+				<div class = "panel-heading"><h4 align = "center">Skills</h4></div>
+				<div class = "panel-body" ng-repeat = "item in resume | filter: {type: 'skill'}">{{item.skill}}</div>
+			</div>
+		</div>
+		<div>
+			<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+			<script src = "controllers/controller.js"></script>
+		</div>
+	</body>
+</html>
